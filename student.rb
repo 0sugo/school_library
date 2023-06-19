@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require './person'
 # Define student
 class Student < Person
@@ -9,6 +7,6 @@ class Student < Person
   end
 
   def play_hooky
-    "¯\(ツ)/¯"
+    '¯\(ツ)/¯'
   end
 end
