@@ -1,10 +1,13 @@
-require "./person.rb"
+# frozen_string_literal: true
 
-class Teacher<Person
+require './person'
+# define teacher
+class Teacher < Person
   def initialize(specialization)
     super()
     @specialization = specialization
   end
+
   def can_use_services
     true
   end
