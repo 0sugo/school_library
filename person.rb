@@ -25,4 +25,3 @@ class Person < Nameable
   end
 end
 
-
