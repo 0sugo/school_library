@@ -1,3 +1,4 @@
+require_relative './base_decorator.rb'
 # class for trimmer Decorator inheriting basedecorator
 class TrimmerDecorator < BaseDecorator
   def correct_name

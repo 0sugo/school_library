@@ -1,4 +1,4 @@
-require_relative './baseDecorator'
+require_relative './base_decorator.rb'
 # class for capitalizeDecorator inheriting basedecorator
 class CapitalizeDecorator < BaseDecorator
   def correct_name
