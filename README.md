@@ -38,6 +38,7 @@
 ### Key Features <a name="key-features"></a>
 
 - **[Rubocop_set_and_working]**
+- **[Decorate_classes_using_decorator_patterns]**
 - **[class_inheritance_exhibites]**
 
 <!-- GETTING STARTED -->
