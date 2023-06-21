@@ -1,5 +1,5 @@
-require_relative './base_decorator'
-# class for trimmer Decorator inheriting basedecorator
+require_relative 'base_decorator'
+# define trimmer decorator
 class TrimmerDecorator < BaseDecorator
   def correct_name
     name = super

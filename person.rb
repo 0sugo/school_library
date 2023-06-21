@@ -1,7 +1,8 @@
-require_relative './nameable'
-# Define class person
+require_relative 'capitalize_decorator'
+require_relative 'trimmer_decorator'
+# define person class
 class Person < Nameable
-  def initialize(name = 'unknown', age = nil, parent_permission: true)
+  def initialize(age = nil, name = 'unknown', parent_permission: true)
     super
     @id = Random.rand(1..1000)
     @name = name
@@ -12,17 +13,17 @@ class Person < Nameable
   attr_accessor :name, :age
   attr_reader :id
 
+  def correct_name
+    @name
+  end
+
   def of_age?
     @age.to_i >= 18
   end
 
   def can_use_services?
-    return true if of_age || @parent_permission
+    return true if of_age? || @parent_permission
 
     false
-  end
-
-  def correct_name
-    @name
   end
 end
