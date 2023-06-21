@@ -1,9 +1,8 @@
-# frozen_string_literal: true
-
 require_relative './nameable'
 # Define class person
 class Person < Nameable
   def initialize(name = 'unknown', age = nil, parent_permission: true)
+    super
     @id = Random.rand(1..1000)
     @name = name
     @age = age

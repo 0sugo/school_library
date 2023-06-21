@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative './baseDecorator'
 # class for capitalizeDecorator inheriting basedecorator
 class CapitalizeDecorator < BaseDecorator
@@ -8,8 +6,3 @@ class CapitalizeDecorator < BaseDecorator
     @nameable.correct_name.capitalize
   end
 end
-
-person = Person.new(22, 'maximilianus')
-person.correct_name
-capitalizedPerson = CapitalizeDecorator.new(person)
-capitalizedPerson.correct_name

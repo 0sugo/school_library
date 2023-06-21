@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # class for trimmer Decorator inheriting basedecorator
 class TrimmerDecorator < BaseDecorator
   def correct_name
