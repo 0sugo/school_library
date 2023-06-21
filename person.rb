@@ -1,4 +1,6 @@
-require_relative "./nameable.rb"
+# frozen_string_literal: true
+
+require_relative './nameable'
 # Define class person
 class Person < Nameable
   def initialize(name = 'unknown', age = nil, parent_permission: true)
@@ -20,8 +22,8 @@ class Person < Nameable
 
     false
   end
+
   def correct_name
     @name
   end
 end
-
