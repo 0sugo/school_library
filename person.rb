@@ -1,4 +1,4 @@
-require_relative './nameable.rb'
+require_relative './nameable'
 # Define class person
 class Person < Nameable
   def initialize(name = 'unknown', age = nil, parent_permission: true)
