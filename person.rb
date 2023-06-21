@@ -1,5 +1,6 @@
+require_relative "./nameable.rb"
 # Define class person
-class Person
+class Person < Nameable
   def initialize(name = 'unknown', age = nil, parent_permission: true)
     @id = Random.rand(1..1000)
     @name = name
@@ -19,10 +20,9 @@ class Person
 
     false
   end
-end
-
-class Nameable
   def correct_name
-    raise NotImplementedError, "Method not implemented."
+    @name
   end
 end
+
+
