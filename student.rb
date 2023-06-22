@@ -1,9 +1,11 @@
 require './person'
 # Define student
 class Student < Person
+  attr_accessor :name, :classroom
   def initialize(classroom)
     super()
-    @classroom = classroom
+    @name = name
+    @classroom = nil
   end
 
   def play_hooky
