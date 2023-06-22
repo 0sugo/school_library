@@ -2,6 +2,12 @@ require_relative 'nameable'
 require_relative 'base_decorator'
 require_relative 'capitalize_decorator'
 require_relative 'trimmer_decorator'
+require_relative 'book'
+require_relative 'classroom'
+require_relative 'rental'
+require_relative 'student'
+require_relative 'teacher'
+
 # define person class
 class Person < Nameable
   def initialize(age = nil, name = 'unknown', parent_permission: true)
@@ -10,9 +16,16 @@ class Person < Nameable
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @rentals = []
+
   end
 
-  attr_accessor :name, :age
+  def add_rental(rental)
+    rentals << rental
+    rental.person = self
+  end
+
+  attr_accessor :name, :age, :rentals
   attr_reader :id
 
   def correct_name
@@ -29,3 +42,4 @@ class Person < Nameable
     false
   end
 end
+
