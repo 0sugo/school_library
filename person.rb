@@ -17,7 +17,6 @@ class Person < Nameable
     @age = age
     @parent_permission = parent_permission
     @rentals = []
-
   end
 
   def add_rental(rental)
@@ -42,4 +41,3 @@ class Person < Nameable
     false
   end
 end
-
