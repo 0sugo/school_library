@@ -6,7 +6,8 @@ class Student < Person
   def initialize(_classroom)
     super()
     @name = name
-    @classroom = nil
+    @classroom = classroom
+    classroom.students.push(self) unless classroom.students.include?(self)
   end
 
   def play_hooky
