@@ -37,9 +37,12 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **[Rubocop_set_and_working]**
+- **[Functional_console-UI]**
+- **[Set_up_associations_for_different_classes]**
 - **[Decorate_classes_using_decorator_patterns]**
-- **[class_inheritance_exhibites]**
+- **[Ability_to_add_people]**
+- **[Ability_to_add_books]**
+- **[Ability_to_list_people&books]**
 
 <!-- GETTING STARTED -->
 
@@ -76,10 +79,9 @@ bundle install
 
 To run the project execute the following command in the terminal
 ```sh
-ruby <filename>.rb
+ruby main.rb
 ```
-Note:The filename represents the file you want to run
-
+Follow the prompts to interact with the system
 ## 👥 Authors <a name="authors"></a>
 
 👤 **JOSECK OSUGO**
@@ -94,6 +96,7 @@ Note:The filename represents the file you want to run
 ## 🔭 Future Features <a name="future-features"></a>
 
 - [ ] [Add_a_user_interface]
+- [ ] [Add_tests]
 
 <!-- CONTRIBUTING -->
 
@@ -115,7 +118,7 @@ If you like this project kindly give it a star⭐️.
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thankMicroverse for this project
+I would like to thank Microverse for this project
 
 <!-- LICENSE -->
 
