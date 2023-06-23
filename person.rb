@@ -1,13 +1,5 @@
 require_relative 'nameable'
-require_relative 'base_decorator'
-require_relative 'capitalize_decorator'
-require_relative 'trimmer_decorator'
-require_relative 'book'
-require_relative 'classroom'
-require_relative 'rental'
-require_relative 'student'
-require_relative 'teacher'
-
+require('./rental')
 # define person class
 class Person < Nameable
   attr_accessor :name, :age, :rentals
@@ -22,7 +14,7 @@ class Person < Nameable
     @rentals = []
   end
 
-  def add_rental(book, date)
+  def add_book_rental(date,book)
     Rental.new(date, book, self)
   end
 
@@ -30,6 +22,7 @@ class Person < Nameable
     @name
   end
 
+  private
   def of_age?
     @age.to_i >= 18
   end
@@ -40,3 +33,4 @@ class Person < Nameable
     false
   end
 end
+
