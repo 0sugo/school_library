@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # define book
 class Classroom
   attr_accessor :label, :students
