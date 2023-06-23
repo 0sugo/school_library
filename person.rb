@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'nameable'
 require('./rental')
 # define person class
@@ -14,7 +16,7 @@ class Person < Nameable
     @rentals = []
   end
 
-  def add_book_rental(date,book)
+  def add_book_rental(date, book)
     Rental.new(date, book, self)
   end
 
@@ -23,6 +25,7 @@ class Person < Nameable
   end
 
   private
+
   def of_age?
     @age.to_i >= 18
   end
@@ -33,4 +36,3 @@ class Person < Nameable
     false
   end
 end
-

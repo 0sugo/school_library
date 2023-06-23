@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'person'
 # Define student
 class Student < Person
@@ -6,7 +8,7 @@ class Student < Person
   def initialize(age, name, parent_permission)
     super(age, name, parent_permission: parent_permission)
   end
-  
+
   def classroom=(classroom)
     @classroom = classroom
     classroom.students.push(self) unless classroom.students.include?(self)

@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require './person'
 require './student'
 require './teacher'
 require './book'
 require './classroom'
 require './rental'
-
+# define app
 class App
   def initialize
     @books = []
@@ -84,7 +86,7 @@ class App
     puts 'Teacher created successfully'
   end
 
-  def create_book()
+  def create_book
     puts 'Create a new book'
     print 'Enter title: '
     title = gets.chomp

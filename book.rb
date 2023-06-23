@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
+require './rental'
 # define book
-require "./rental"
 class Book
-  attr_accessor :title, :author, :rentals
+  attr_accessor :title, :author, :rental
 
   def initialize(title, author)
     @title = title

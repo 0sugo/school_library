@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require_relative 'person'
 # define teacher
 class Teacher < Person
   attr_accessor :specialization
-  
-  def initialize(specialization,age,name)
+
+  def initialize(specialization, age, name)
     super(age, name)
     @specialization = specialization
   end

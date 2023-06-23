@@ -1,14 +1,15 @@
+# frozen_string_literal: true
+
 # define rental
 class Rental
   attr_accessor :date, :book, :person
 
-  def initialize(date,person,book)
+  def initialize(date, person, book)
     @date = date
     @book = book
     @person = person
 
-  person.rentals << self
-  book.rental << self
-
+    person.rentals << self
+    book.rental << self
   end
 end
