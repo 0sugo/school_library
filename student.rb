@@ -7,7 +7,7 @@ class Student < Person
     super(age, name, parent_permission: parent_permission)
   end
 
-  def classroom=(classroomer)
+  def classroom(classroomer)
     @classroom = classroomer
     classroom.students.push(self) unless classroom.students.include?(self)
   end
