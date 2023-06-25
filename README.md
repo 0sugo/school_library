@@ -56,7 +56,6 @@ In order to run this project you need:
  - Ruby installed
  - vsCode
  - vsCode
- - vsCode
 
 ### Setup
 
