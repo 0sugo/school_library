@@ -55,6 +55,17 @@ To get a local copy up and running, follow these steps.
 In order to run this project you need:
  - Ruby installed
  - vsCode
+ - vsCode
+ - vsCode
+ - vsCode
+ - vsCode
+ - vsCode
+ - vsCode
+ - vsCode
+ - vsCode
+ - vsCode
+ - vsCode
+ - vsCode
 
 ### Setup
 
