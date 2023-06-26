@@ -91,6 +91,14 @@ Follow the prompts to interact with the system
 - LinkedIn: [Joseck Osugo](https://www.linkedin.com/in/joseck-osugo/)
 
 
+👤 **ESTHER UDONDIAN**
+
+- GitHub: [@Click here](https://github.com/eudondian)
+- Twitter: [@Click here](https://twitter.com/EUdondian)
+- LinkedIn: [@Click here](https://www.linkedin.com/in/esther-udondian/)
+
+
+
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
