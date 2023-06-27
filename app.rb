@@ -3,6 +3,7 @@ require_relative 'teacher'
 require_relative 'book'
 require_relative 'rental'
 require_relative 'manage_people'
+require 'json'
 
 class App
   attr_accessor :books, :people, :rentals
@@ -11,6 +12,17 @@ class App
     @books = []
     @people = []
     @rentals = []
+  end
+
+  def save_books_data(all_books)
+    File.write("./data/books.json", all_books.join("\n"),mode:"a")
+
+  end
+
+  
+
+  def save_rentals_data
+
   end
 
   def list_books
@@ -39,6 +51,7 @@ class App
     author = gets.chomp
     book = Book.new(title, author)
     @books << book
+    save_books_data(@books)
   end
 
   def create_rental
