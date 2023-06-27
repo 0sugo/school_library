@@ -19,7 +19,10 @@ class App
 
   end
 
-  
+  def save_people_data(all_people)
+    File.write("./data/people.json", all_people.join("\n"),mode:"a")
+
+  end
 
   def save_rentals_data
 
@@ -42,6 +45,7 @@ class App
     when 2
       create_teacher
     end
+    save_people_data(@people)
   end
 
   def create_book
