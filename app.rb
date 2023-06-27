@@ -4,7 +4,7 @@ require_relative 'book'
 require_relative 'rental'
 require_relative 'manage_people'
 require 'json'
-
+# define class app
 class App
   attr_accessor :books, :people, :rentals
 
@@ -15,17 +15,15 @@ class App
   end
 
   def save_books_data(all_books)
-    File.write("./data/books.json", all_books.join("\n"),mode:"a")
-
+    File.write('./data/books.json', all_books.join("\n"), mode: 'a')
   end
 
   def save_people_data(all_people)
-    File.write("./data/people.json", all_people.join("\n"),mode:"a")
-
+    File.write('./data/people.json', all_people.join("\n"), mode: 'a')
   end
 
   def save_rentals_data(all_rentals)
-    File.write("./data/rentals.json", all_rentals.join("\n"),mode:"a")
+    File.write('./data/rentals.json', all_rentals.join("\n"), mode: 'a')
   end
 
   def list_books
