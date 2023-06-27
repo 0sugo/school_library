@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'student'
 require_relative 'teacher'
 require_relative 'book'
@@ -57,33 +59,36 @@ class App
   end
 
   def create_rental
-    if @books.empty?
-      puts 'No books created please create a book'
-      return
-    elsif @people.empty?
-      puts 'No people created please create a person'
-      return
-    end
+    return puts 'No books created. Please create a book.' if @books.empty?
+    return puts 'No people created. Please create a person.' if @people.empty?
 
-    puts 'Select a book from the following list of number'
-    @books.each_with_index { |book, index| puts "#{index}) Title: #{book.title}, Author: #{book.author}" }
-    selected_book = Integer(gets.chomp)
-
-    puts 'Select a person from the following list of number (not ID)'
-    @people.each_with_index do |person, index|
-      puts "#{index}) Name: #{person.name} Age: #{person.age} Id: #{person.id}"
-    end
-
-    selected_person = Integer(gets.chomp)
-
-    puts 'Date MM/DD/YYYY : '
-    selected_date = gets.chomp.to_s
+    selected_book = select_book
+    selected_person = select_person
+    selected_date = rental_date
 
     rented = Rental.new(selected_date, @books[selected_book], @people[selected_person])
     @rentals << rented
-
     puts 'Book was successfully rented.'
     save_rentals_data(@rentals)
+  end
+
+  def select_book
+    puts 'Select a book from the following list by entering the number:'
+    @books.each_with_index { |book, index| puts "#{index}) Title: #{book.title}, Author: #{book.author}" }
+    Integer(gets.chomp)
+  end
+
+  def select_person
+    puts 'Select a person from the following list by entering the number (not ID):'
+    @people.each_with_index do |person, index|
+      puts "#{index}) Name: #{person.name} Age: #{person.age} Id: #{person.id}"
+    end
+    Integer(gets.chomp)
+  end
+
+  def rental_date
+    puts 'Enter the rental date in MM/DD/YYYY format:'
+    gets.chomp.to_s
   end
 
   def list_rental
