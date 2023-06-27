@@ -24,8 +24,8 @@ class App
 
   end
 
-  def save_rentals_data
-
+  def save_rentals_data(all_rentals)
+    File.write("./data/rentals.json", all_rentals.join("\n"),mode:"a")
   end
 
   def list_books
@@ -85,6 +85,7 @@ class App
     @rentals << rented
 
     puts 'Book was successfully rented.'
+    save_rentals_data(@rentals)
   end
 
   def list_rental
