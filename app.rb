@@ -40,7 +40,29 @@ class App
     book = Book.new(title, author)
     @books << book
   end
+  
+def load_data
+    load_books_data
+    load_people_data
+    load_rentals_data
+  end
 
+  def load_books_data
+    file_data = File.read('./data/books.json')
+    @books = file_data ? JSON.parse(file_data).map { |book_data| Book.new(book_data['title'], book_data['author']) } : []
+  end
+
+  def load_people_data
+  file_data = File.read('./data/people.json')
+  @people = JSON.parse(file_data).map { |person_data| Person.new(person_data['age'], person_data['name']) } if file_data && !file_data.empty?
+  end
+
+
+def load_rentals_data
+  file_data = File.read('./data/rentals.json')
+  @rentals = file_data ? JSON.parse(file_data).map { |rental_data| Rental.new(rental_data['date'], Book.new(rental_data['book']['title'], rental_data['book']['author']), Person.new(rental_data['person']['age'], rental_data['person']['name'])) } : []
+end
+  
   def create_rental
     if @books.empty?
       puts 'No books created please create a book'
