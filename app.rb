@@ -72,9 +72,9 @@ class App
   def load_rentals_data
     file_data = File.read('./data/rentals.json')
     @rentals = if file_data
-                 JSON.parse(file_data).map do |rental_data|
-                   Rental.new(rental_data['date'], Book.new(rental_data['book']['title'], rental_data['book']['author']),
-                              Person.new(rental_data['person']['age'], rental_data['person']['name']))
+                 JSON.parse(file_data).map do |rentals|
+                   Rental.new(rentals['date'], Book.new(rentals['book']['title'], rentals['book']['author']),
+                              Person.new(rentals['person']['age'], rentals['person']['name']))
                  end
                else
                  []
@@ -141,6 +141,7 @@ class App
   end
 
   def list_rental
+    p @rentals
     print 'Enter the Person ID: '
     person_id = gets.chomp.to_i
     rented_books = @rentals.select { |rent| rent.person.id == person_id }
