@@ -17,10 +17,9 @@ class App
 
   def save_books_data
     file_data = @books.map { |book| { 'title' => book.title, 'author' => book.author } }
-    File.open('./data/books.json', 'w') do |file|
-      file.write(JSON.generate(file_data))
-    end
+    File.write('./data/books.json', JSON.generate(file_data))
   end
+
 
   def save_people_data
     file_data = @people.map { |person| { 'name' => person.name, 'id' => person.id, 'age' => person.age } }
@@ -40,6 +39,8 @@ class App
   end
 
   def list_books
+    @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
+  end
    def load_data
     load_books_data
     load_people_data
@@ -61,8 +62,7 @@ def load_rentals_data
   file_data = File.read('./data/rentals.json')
   @rentals = file_data ? JSON.parse(file_data).map { |rental_data| Rental.new(rental_data['date'], Book.new(rental_data['book']['title'], rental_data['book']['author']), Person.new(rental_data['person']['age'], rental_data['person']['name'])) } : []
 end
-    @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
-  end
+
 
   def list_people
     @people.each { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
@@ -124,7 +124,6 @@ end
   end
 
   def list_rental
-    p @rentals
     print 'Enter the Person ID: '
     person_id = gets.chomp.to_i
     rented_books = @rentals.select { |rent| rent.person.id == person_id }
