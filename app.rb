@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'student'
 require_relative 'teacher'
 require_relative 'book'
@@ -20,7 +22,6 @@ class App
     File.write('./data/books.json', JSON.generate(file_data))
   end
 
-
   def save_people_data
     file_data = @people.map { |person| { 'name' => person.name, 'id' => person.id, 'age' => person.age } }
     File.open('./data/people.json', 'w') do |file|
@@ -41,7 +42,8 @@ class App
   def list_books
     @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
   end
-   def load_data
+
+  def load_data
     load_books_data
     load_people_data
     load_rentals_data
@@ -49,20 +51,35 @@ class App
 
   def load_books_data
     file_data = File.read('./data/books.json')
-    @books = file_data ? JSON.parse(file_data).map { |book_data| Book.new(book_data['title'], book_data['author']) } : []
+    @books = if file_data
+               JSON.parse(file_data).map do |book_data|
+                 Book.new(book_data['title'], book_data['author'])
+               end
+             else
+               []
+             end
   end
 
   def load_people_data
-  file_data = File.read('./data/people.json')
-  @people = JSON.parse(file_data).map { |person_data| Person.new(person_data['age'], person_data['name']) } if file_data && !file_data.empty?
+    file_data = File.read('./data/people.json')
+    return unless file_data && !file_data.empty?
+
+    @people = JSON.parse(file_data).map do |person_data|
+      Person.new(person_data['age'], person_data['name'])
+    end
   end
 
-
-def load_rentals_data
-  file_data = File.read('./data/rentals.json')
-  @rentals = file_data ? JSON.parse(file_data).map { |rental_data| Rental.new(rental_data['date'], Book.new(rental_data['book']['title'], rental_data['book']['author']), Person.new(rental_data['person']['age'], rental_data['person']['name'])) } : []
-end
-
+  def load_rentals_data
+    file_data = File.read('./data/rentals.json')
+    @rentals = if file_data
+                 JSON.parse(file_data).map do |rental_data|
+                   Rental.new(rental_data['date'], Book.new(rental_data['book']['title'], rental_data['book']['author']),
+                              Person.new(rental_data['person']['age'], rental_data['person']['name']))
+                 end
+               else
+                 []
+               end
+  end
 
   def list_people
     @people.each { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
