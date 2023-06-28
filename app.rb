@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative 'student'
 require_relative 'teacher'
 require_relative 'book'
@@ -24,9 +22,7 @@ class App
 
   def save_people_data
     file_data = @people.map { |person| { 'name' => person.name, 'id' => person.id, 'age' => person.age } }
-    File.open('./data/people.json', 'w') do |file|
-      file.write(JSON.generate(file_data))
-    end
+    File.write('./data/people.json', JSON.generate(file_data))
   end
 
   def save_rentals_data
@@ -34,9 +30,7 @@ class App
       { 'date' => rental.date, 'book' => { 'title' => rental.book.title, 'author' => rental.book.author },
         'person' => { 'name' => rental.person.name, 'id' => rental.person.id, 'age' => rental.person.age } }
     end
-    File.open('./data/rentals.json', 'w') do |file|
-      file.write(JSON.generate(file_data))
-    end
+    File.write('./data/rentals.json', JSON.generate(file_data))
   end
 
   def list_books
@@ -141,7 +135,6 @@ class App
   end
 
   def list_rental
-    p @rentals
     print 'Enter the Person ID: '
     person_id = gets.chomp.to_i
     rented_books = @rentals.select { |rent| rent.person.id == person_id }
