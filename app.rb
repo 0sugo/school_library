@@ -12,18 +12,31 @@ class App
     @books = []
     @people = []
     @rentals = []
+    load_data
   end
 
-  def save_books_data(all_books)
-    File.write('./data/books.json', all_books.join("\n"), mode: 'a')
+  def save_books_data
+    file_data = @books.map { |book| { 'title' => book.title, 'author' => book.author } }
+    File.open('./data/books.json', 'w') do |file|
+      file.write(JSON.generate(file_data))
+    end
   end
 
-  def save_people_data(all_people)
-    File.write('./data/people.json', all_people.join("\n"), mode: 'a')
+  def save_people_data
+    file_data = @people.map { |person| { 'name' => person.name, 'id' => person.id, 'age' => person.age } }
+    File.open('./data/people.json', 'w') do |file|
+      file.write(JSON.generate(file_data))
+    end
   end
 
-  def save_rentals_data(all_rentals)
-    File.write('./data/rentals.json', all_rentals.join("\n"), mode: 'a')
+  def save_rentals_data
+    file_data = @rentals.map do |rental|
+      { 'date' => rental.date, 'book' => { 'title' => rental.book.title, 'author' => rental.book.author },
+        'person' => { 'name' => rental.person.name, 'id' => rental.person.id, 'age' => rental.person.age } }
+    end
+    File.open('./data/rentals.json', 'w') do |file|
+      file.write(JSON.generate(file_data))
+    end
   end
 
   def list_books
@@ -43,7 +56,7 @@ class App
     when 2
       create_teacher
     end
-    save_people_data(@people)
+    save_people_data
   end
 
   def create_book
@@ -53,7 +66,7 @@ class App
     author = gets.chomp
     book = Book.new(title, author)
     @books << book
-    save_books_data(@books)
+    save_books_data
   end
 
   def create_rental
@@ -67,7 +80,7 @@ class App
     rented = Rental.new(selected_date, @books[selected_book], @people[selected_person])
     @rentals << rented
     puts 'Book was successfully rented.'
-    save_rentals_data(@rentals)
+    save_rentals_data
   end
 
   def select_book
@@ -90,10 +103,12 @@ class App
   end
 
   def list_rental
+    p @rentals
     print 'Enter the Person ID: '
-    person_id = Integer(gets.chomp)
-    @rentals.each do |rent|
-      puts "Date: #{rent.date}, Book: #{rent.book.title} Author: #{rent.book.author}" if rent.person.id == person_id
+    person_id = gets.chomp.to_i
+    rented_books = @rentals.select { |rent| rent.person.id == person_id }
+    rented_books.each do |rent|
+      puts "Date: #{rent.date}, Book: #{rent.book.title}, Author: #{rent.book.author}"
     end
   end
 
