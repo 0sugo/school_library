@@ -12,6 +12,7 @@
     - [Setup](#setup)
     - [Install](#install)
     - [Usage](#usage)
+    - [Tests](#tests)
   - [👥 Authors ](#-authors-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
@@ -35,6 +36,13 @@
   </ul>
 </details>
 
+<details>
+<summary>Tests</summary>
+  <ul>
+    <li><a href="https://rspec.info/">RSpec</a></li>
+  </ul>
+</details>
+
 ### Key Features <a name="key-features"></a>
 
 - **[Functional_console-UI]**
@@ -43,6 +51,7 @@
 - **[Ability_to_add_people]**
 - **[Ability_to_add_books]**
 - **[Ability_to_list_people&books]**
+- **[Unit_tests]**
 
 <!-- GETTING STARTED -->
 
@@ -82,6 +91,15 @@ To run the project execute the following command in the terminal
 ruby main.rb
 ```
 Follow the prompts to interact with the system
+
+
+### Tests
+To  run all tests,open your terminal and run the following:
+```sh
+rspec spec
+```
+
+
 ## 👥 Authors <a name="authors"></a>
 
 👤 **JOSECK OSUGO**
@@ -104,7 +122,6 @@ Follow the prompts to interact with the system
 ## 🔭 Future Features <a name="future-features"></a>
 
 - [ ] [Add_a_user_interface]
-- [ ] [Add_tests]
 
 <!-- CONTRIBUTING -->
 
