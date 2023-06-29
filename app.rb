@@ -21,7 +21,7 @@ class App
   end
 
   def save_people_data
-    file_data = @people.map { |person| { 'name' => person.name, 'id' => person.id, 'age' => person.age } }
+    file_data = @people.map { |person| { 'name' => person.name, 'id' => person.id, 'age' => person.age, 'classification' => person.class.name } }
     File.write('./data/people.json', JSON.generate(file_data))
   end
 
@@ -36,6 +36,17 @@ class App
   def list_books
     @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
   end
+
+  def list_people
+    @people.each do |person|
+      if person.instance_of?(Teacher)
+        puts "[Teacher] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+      else
+        puts "[Student] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    end
+  end
+  end
+
 
   def load_data
     load_books_data
@@ -59,9 +70,16 @@ class App
     return unless file_data && !file_data.empty?
 
     @people = JSON.parse(file_data).map do |person_data|
-      Person.new(person_data['age'], person_data['name'])
+      if person_data['classification'] == 'Student'
+        Student.new(nil, person_data['age'], person_data['name'])
+      elsif person_data['classification'] == 'Teacher'
+        Teacher.new(person_data['age'], person_data['name'], person_data['specialization'])
+      else
+        Person.new(person_data['age'], person_data['name'])
+      end
     end
   end
+
 
   def load_rentals_data
     file_data = File.read('./data/rentals.json')
@@ -75,9 +93,7 @@ class App
                end
   end
 
-  def list_people
-    @people.each { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
-  end
+
 
   def create_person
     print 'Do you want to create a new student (1) or teacher (2)? [Input the number]: '
@@ -88,7 +104,6 @@ class App
     when 2
       create_teacher
     end
-    save_people_data
   end
 
   def create_book
@@ -98,7 +113,6 @@ class App
     author = gets.chomp
     book = Book.new(title, author)
     @books << book
-    save_books_data
   end
 
   def create_rental
@@ -112,7 +126,6 @@ class App
     rented = Rental.new(selected_date, @books[selected_book], @people[selected_person])
     @rentals << rented
     puts 'Book was successfully rented.'
-    save_rentals_data
   end
 
   def select_book
@@ -141,6 +154,13 @@ class App
     rented_books.each do |rent|
       puts "Date: #{rent.date}, Book: #{rent.book.title}, Author: #{rent.book.author}"
     end
+  end
+
+  def save
+    save_books_data
+    save_people_data
+    save_rentals_data
+    exit
   end
 
   def invalid_option
