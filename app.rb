@@ -21,7 +21,9 @@ class App
   end
 
   def save_people_data
-    file_data = @people.map { |person| { 'name' => person.name, 'id' => person.id, 'age' => person.age, 'classification' => person.class.name } }
+    file_data = @people.map do |person|
+      { 'name' => person.name, 'id' => person.id, 'age' => person.age, 'classification' => person.class.name }
+    end
     File.write('./data/people.json', JSON.generate(file_data))
   end
 
@@ -43,10 +45,9 @@ class App
         puts "[Teacher] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
       else
         puts "[Student] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+      end
     end
   end
-  end
-
 
   def load_data
     load_books_data
@@ -80,7 +81,6 @@ class App
     end
   end
 
-
   def load_rentals_data
     file_data = File.read('./data/rentals.json')
     @rentals = if file_data
@@ -92,8 +92,6 @@ class App
                  []
                end
   end
-
-
 
   def create_person
     print 'Do you want to create a new student (1) or teacher (2)? [Input the number]: '
