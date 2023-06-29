@@ -12,6 +12,7 @@
     - [Setup](#setup)
     - [Install](#install)
     - [Usage](#usage)
+    - [Tests](#tests)
   - [👥 Authors ](#-authors-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
@@ -32,6 +33,13 @@
 <summary>Tech stack</summary>
   <ul>
     <li><a href="https://www.ruby-lang.org/en/">Ruby</a></li>
+  </ul>
+</details>
+
+<details>
+<summary>Tests</summary>
+  <ul>
+    <li><a href="https://rspec.info/">RSpec</a></li>
   </ul>
 </details>
 
@@ -82,6 +90,15 @@ To run the project execute the following command in the terminal
 ruby main.rb
 ```
 Follow the prompts to interact with the system
+
+
+### Tests
+To  run all tests,open your terminal and run the following:
+```sh
+rspec spec
+```
+
+
 ## 👥 Authors <a name="authors"></a>
 
 👤 **JOSECK OSUGO**
