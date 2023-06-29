@@ -51,6 +51,7 @@
 - **[Ability_to_add_people]**
 - **[Ability_to_add_books]**
 - **[Ability_to_list_people&books]**
+- **[Unit_tests]**
 
 <!-- GETTING STARTED -->
 
@@ -121,7 +122,6 @@ rspec spec
 ## 🔭 Future Features <a name="future-features"></a>
 
 - [ ] [Add_a_user_interface]
-- [ ] [Add_tests]
 
 <!-- CONTRIBUTING -->
 
