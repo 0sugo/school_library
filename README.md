@@ -67,7 +67,6 @@ In order to run this project you need:
  - vsCode
  - vsCode
  - vsCode
- - vsCode
 
 ### Setup
 
